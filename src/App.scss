@@ -1,0 +1,213 @@
+/* Variables
+========================================================================== */
+$teal:#0399A3;
+$lightGry: #f2f2f2;
+$darkGry: #333333;
+
+/* Base
+========================================================================== */
+body, html {
+	font-family: 'Open Sans', sans-serif;
+	color: $darkGry;
+}
+
+// h1, h2, h3, h4 {margin-top: 0;}
+
+p {margin-bottom: 0;}
+
+a {
+	color: $teal;
+	text-decoration: none;
+	transition: all 300ms ease;
+	&:hover {
+		color: $darkGry;
+		text-decoration: underline;
+	}
+}
+
+code {
+	padding: 8px 12px;
+	background-color: $lightGry;
+}
+
+.hljs {
+	padding: 1.5em;
+	margin-top: 50px;
+}
+
+
+
+/* App
+========================================================================== */
+.app-header {
+	display: flex;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	padding: 10px;
+	color: #fff;
+	background-color: $teal;
+	z-index: 1;
+	a {color: #fff;}
+}
+
+.menu-trigger {
+	position: absolute;
+	display: none;
+	top: 25px;
+	left: 15px;
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	z-index: 10;
+	.bar,
+	.bar:after,
+	.bar:before {
+		width: 30px;
+		height: 2px;
+	}
+	.bar {
+		position: relative;
+		transform: translateY(10px);
+		background: #fff;
+		transition: all 1ms;
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 10px;
+			background: #fff;
+			transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+		}
+		&:after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 10px;
+			background: #fff;
+			transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+		}
+		&.animate {
+			background: none;
+			&:before {
+				bottom: 0;
+				background-color: white;
+				transform: rotate(-45deg);
+				transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+			}
+			&:after {
+				top: 0;
+				background-color: white;
+				transform: rotate(45deg);
+				transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+			}
+		}
+	}
+}
+
+.app-sidebar {
+	position: fixed;
+	top: 70px;
+	left: 0;
+	width: 20vw;
+	height: 100vh;
+	padding-top: 20px;
+	background: #fff;
+	z-index: 2;
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		li {
+			height: 45px;
+			line-height: 45px;
+			transition: background 300ms ease;
+			&.header {
+				padding-left: 20px;
+				font-weight: bold;
+				&:after {
+					display: block;
+					content: "";
+					width: 75%;
+					height: 1px;
+					background: $lightGry;
+				}
+			}
+			&.has-sub {
+				margin-bottom: 90px;
+				ul {
+					padding-left: 15px;
+				}
+			}
+			a {
+				display: block;
+				padding-left: 20px;
+				// color: #000;
+				text-decoration: none;
+				cursor: pointer;
+				&:hover,
+				&.active {background: $lightGry;}
+			}
+
+		}
+	}
+}
+
+.app-content {
+	position: relative;
+	margin-left: 20vw;
+	padding: 20px;
+	margin-top: 70px;
+	transition: margin-left 300ms ease;
+	.content {margin-bottom: 50px;}
+}
+
+.panel {
+	background: $lightGry;
+}
+
+@media screen and (max-width: 780px) {
+
+	.app-header {text-align: center;}
+
+	.menu-trigger {display: block;}
+
+	.app-sidebar {
+		width: 150px;
+		transform: translateX(-150px);
+		transition: transform 300ms ease;
+	}
+
+	.app-content {margin-left: 0;}
+
+	.app.open {
+		.app-sidebar {
+			transform: translateX(0);
+		}
+	}
+
+}
+
+/* Grid
+========================================================================== */
+.grid .row {
+	margin-bottom: 15px;
+}
+
+.inner {
+	background-color: lightblue;
+	margin: 10px 0;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: center;
+	transition: background-color 300ms ease;
+	&:hover {background-color: #c1e1ec;}
+}
+
+.non-inner {
+	text-align: center;
+	padding: 15px;
+	margin: 0 10px;
+	background: lightblue;
+}
