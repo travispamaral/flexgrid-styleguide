@@ -138,7 +138,7 @@ code {
 
 @media screen and (max-width: 780px) {
   .app-header {
-    text-align: center; }
+    justify-content: center; }
   .menu-trigger {
     display: block; }
   .app-sidebar {
